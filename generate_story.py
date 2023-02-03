@@ -122,8 +122,8 @@ class StoryGenerator:
 
                 if 'sound' in paragraphs[i]['text'][j]:
                     for sound_name in paragraphs[i]['text'][j]['sound']:
-                        print('sound_name', sound_name)
-                        sound_clip = mp.AudioFileClip(os.path.join(sound_storage, '{}.mp3'.format(sound_name))).fx(
+                        print('sound_name', sound_name.lower())
+                        sound_clip = mp.AudioFileClip(os.path.join(sound_storage, '{}.mp3'.format(sound_name.lower()))).fx(
                             volumex,
                             0.4)
                         if sound_clip.duration > text_audios[j].duration:

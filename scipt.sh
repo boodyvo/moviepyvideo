@@ -1,5 +1,5 @@
 apt-get update
-apt-get install -y python3-pip nano ffmpeg libsm6 libxext6 imagemagick screen
+apt-get install -y python3-pip nano ffmpeg libsm6 libxext6 imagemagick screen tmux
 
 pip3 install moviepy boto3 botocore Pillow numpy flask requests
 
