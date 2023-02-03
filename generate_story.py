@@ -9,7 +9,7 @@ import os, tempfile, logging
 # default_size = (1080, 1920)
 default_size = (576, 1024)
 # full_text_size = (720, 900)
-full_text_size = (336, 500)
+full_text_size = (400, 600)
 # full_text_position = (140, 280)
 full_text_position = (100, 150)
 

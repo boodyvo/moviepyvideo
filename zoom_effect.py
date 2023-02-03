@@ -36,7 +36,7 @@ def zoom_in_effect(clip, zoom_ratio=0.04):
 
 
 def clip_from_image(image_path, duration, size):
-    image_video = mp.ImageClip(image_path).set_fps(25).set_duration(duration).resize(size)
+    image_video = mp.ImageClip(image_path).set_fps(24).set_duration(duration).resize(size)
     clip = zoom_in_effect(image_video, 0.01)
 
     return clip
