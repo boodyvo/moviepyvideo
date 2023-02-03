@@ -223,7 +223,7 @@ def download_files_from_config_and_update_config(videos_config):
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
-        if not os.path.exists(image_file_name):
+        if not os.path.exists(music_file_name):
             with open(music_file_name, "wb") as f:
                 f.write(response.content)
             print("File downloaded successfully.")
