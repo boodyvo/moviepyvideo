@@ -11,8 +11,8 @@ import generate_story
 from moviepy.config import change_settings
 from logging.config import dictConfig
 
-change_settings({"FFMPEG_BINARY": "/opt/homebrew/bin/ffmpeg"})
-# change_settings({"FFMPEG_BINARY": "/usr/bin/ffmpeg"})
+# change_settings({"FFMPEG_BINARY": "/opt/homebrew/bin/ffmpeg"})
+change_settings({"FFMPEG_BINARY": "/usr/bin/ffmpeg"})
 
 dictConfig({
     'version': 1,
