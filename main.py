@@ -3,7 +3,8 @@ from pathlib import Path
 import sys, json, logging
 import os
 
-os.environ["IMAGEIO_FFMPEG_EXE"] = "/opt/homebrew/bin/ffmpeg"
+# os.environ["IMAGEIO_FFMPEG_EXE"] = "/opt/homebrew/bin/ffmpeg"
+os.environ["IMAGEIO_FFMPEG_EXE"] = "/usr/bin/ffmpeg"
 
 path_root = Path(__file__).parents[2]
 sys.path.append(str(path_root))
