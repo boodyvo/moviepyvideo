@@ -11,7 +11,7 @@ full_text_size = (720, 900)
 full_text_position = (140, 280)
 
 # default_local_file_storage = "/storage"
-default_local_file_storage = "/Users/vbudichenko/development/go/src/github.com/boodyvo/moviepyvideos/storage"
+default_local_file_storage = os.getenv('VIDEO_GENERATION_STORAGE_PATH', '/root/moviepyvideo/storage')
 
 sound_storage = os.path.join(default_local_file_storage, 'audio', 'music', 'Horror Stories', 'Sounds')
 

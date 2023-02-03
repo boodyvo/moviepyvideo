@@ -6,7 +6,7 @@ import logging, os
 default_profile_name = "content-management"
 default_region_name = "us-east-1"
 # default_local_file_storage = '/storage'
-default_local_file_storage = "/Users/vbudichenko/development/go/src/github.com/boodyvo/videogeneration/storage"
+default_local_file_storage = os.getenv('VIDEO_GENERATION_STORAGE_PATH', '/root/moviepyvideo/storage')
 
 
 class VoiceGenerator:
