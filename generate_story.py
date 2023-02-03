@@ -9,9 +9,9 @@ import os, tempfile, logging
 # default_size = (1080, 1920)
 default_size = (576, 1024)
 # full_text_size = (720, 900)
-full_text_size = (356, 500)
+full_text_size = (336, 500)
 # full_text_position = (140, 280)
-full_text_position = (110, 280)
+full_text_position = (100, 150)
 
 # default_local_file_storage = "/storage"
 default_local_file_storage = os.getenv('VIDEO_GENERATION_STORAGE_PATH', '/root/moviepyvideo/storage')
@@ -40,7 +40,7 @@ def generate_story_fragment(
     text_clip = (
         mp.TextClip(
             txt=text,
-            fontsize=60,
+            fontsize=30,
             bg_color='black',
             color='white',
             method='caption',
