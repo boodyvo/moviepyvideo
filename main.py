@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from pathlib import Path
 import sys, json, logging
 import os
@@ -48,3 +48,7 @@ def generate():
         return jsonify({'error': {'id': '1', 'message': 'cannot generate video'}}), 500
 
     return jsonify({'video': {'type': 'file', 'file_name': output_file}})
+
+@app.route('/videos/<path:path>')
+def send_report(path):
+    return send_from_directory('storage/video/generated/8c3de4dd', path)

@@ -150,9 +150,11 @@ class StoryGenerator:
 
         print('Saving the file')
 
-        self.process_final_video_clip(final_clip, project_id, title)
+        video_path = self.process_final_video_clip(final_clip, project_id, title)
         final_clip.close()
         temp_dir.cleanup()
+
+        return video_path
 
     def process_final_video_clip(self, video_clip, project_id, title):
         if preview:
@@ -165,8 +167,6 @@ class StoryGenerator:
         os.makedirs("{}/{}".format(self.generated_video_file_storage, project_id), exist_ok=True)
         file_path = "{}/{}/{}.mp4".format(self.generated_video_file_storage, project_id, title)
 
-        # final_video.write_videofile(video_dir + 'myoutfile.mp4', threads = 8, fps=24)
-
         video_clip.write_videofile(
             file_path,
             codec='libx264',
@@ -177,6 +177,8 @@ class StoryGenerator:
             fps=24
         )
 
+        return "{}.mp4".format(title)
+
 
 def generate_story_video_from_config(videos_config):
     download_files_from_config_and_update_config(videos_config)
@@ -184,7 +186,7 @@ def generate_story_video_from_config(videos_config):
     text_voice_generator = voice_generator.VoiceGenerator()
     story_generator = StoryGenerator(text_voice_generator)
     try:
-        story_generator.generate_video(
+        return story_generator.generate_video(
             project_id=videos_config['project_id'],
             title=videos_config['title'],
             paragraphs=videos_config['paragraphs'],
