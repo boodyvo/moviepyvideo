@@ -16,7 +16,7 @@ full_text_position = (100, 150)
 # default_local_file_storage = "/storage"
 default_local_file_storage = os.getenv('VIDEO_GENERATION_STORAGE_PATH', '/root/moviepyvideo/storage')
 
-sound_storage = os.path.join(default_local_file_storage, 'audio', 'music', 'Horror Stories', 'Sounds')
+sound_storage = os.path.join(default_local_file_storage, 'audio', 'sounds')
 
 preview = False
 
@@ -120,16 +120,16 @@ class StoryGenerator:
                 duration = text_audios[j].duration + 1
                 sound_clips = []
 
-                # if 'sound' in paragraphs[i]['text'][j]:
-                #     for sound_name in paragraphs[i]['text'][j]['sound']:
-                #         print('sound_name', sound_name)
-                #         sound_clip = mp.AudioFileClip(os.path.join(sound_storage, '{}.mp3'.format(sound_name))).fx(
-                #             volumex,
-                #             0.5)
-                #         if sound_clip.duration > text_audios[j].duration:
-                #             sound_clip = sound_clip.subclip(0, duration)
-                #
-                #         sound_clips.append(sound_clip)
+                if 'sound' in paragraphs[i]['text'][j]:
+                    for sound_name in paragraphs[i]['text'][j]['sound']:
+                        print('sound_name', sound_name)
+                        sound_clip = mp.AudioFileClip(os.path.join(sound_storage, '{}.mp3'.format(sound_name))).fx(
+                            volumex,
+                            0.4)
+                        if sound_clip.duration > text_audios[j].duration:
+                            sound_clip = sound_clip.subclip(0, duration)
+
+                        sound_clips.append(sound_clip)
 
                 if len(sound_clips) == 0:
                     sound_clips = None
@@ -242,12 +242,68 @@ def download_files_from_config_and_update_config(videos_config):
     #     urllib.request.urlretrieve(music_url, music_file_name)
 
 if __name__ == "__main__":
+    # config = {
+    #     "project_id": "8c3de4dd",
+    #     "title": "Test",
+    #     "background_sound": {
+    #         "path": "https://cdn.pixabay.com/download/audio/2022/01/18/audio_3ad65087c4.mp3?filename=thriller-ambient-14563.mp3",
+    #         "start": 40,
+    #     },
+    #     "speech": {
+    #         "language": "en-US",
+    #         "voice": "Matthew"
+    #     },
+    #     "paragraphs": [
+    #         {
+    #             "image_title": "dark and foreboding mansion with cracked walls and overgrown foliage",
+    #             "image": "https://replicate.delivery/pbxt/AHrvFfe3eEd9fSNhicwGnSKgFFyFkW8voegIqAmzox2e93nGE/out-0.png",
+    #             "text": [
+    #                 {
+    #                     "sound": ["thunder"],
+    #                     "text": "The storm was loud and scary, and I couldn't help but feel like I was being watched as I walked up the long driveway to the mansion."
+    #                 },
+    #                 {
+    #                     "text": "The air was heavy with the smell of decay and must, and I couldn't shake the feeling that something terrible was waiting for me inside.",
+    #                 },
+    #                 {
+    #                     "sound": ["door creek"],
+    #                     "text": "As I approached the front door, I hesitated for a moment, wondering if I should turn back.",
+    #                 },
+    #                 {
+    #                     "text": "But my curiosity won out and I pushed the door open, stepping into the darkness beyond.",
+    #                 },
+    #             ]
+    #         },
+    #         {
+    #             "image_title": "creepy hallway with broken chandelier and shadowy figures",
+    #             "image": "https://replicate.delivery/pbxt/WtCfp8htkg2yEK0osaCeRH8vbW3FMgSPVaqRTE9yrimwfepBB/out-0.png",
+    #             "text": [
+    #                 {
+    #                     "text": "As I moved further into the mansion, the air grew colder and the shadows seemed to stretch out and claw at me.",
+    #                 },
+    #                 {
+    #                     "sound": ["concrete footsteps"],
+    #                     "text": "The sound of my own footsteps echoing off the walls did little to comfort me, and I couldn't shake the feeling that I was being followed.",
+    #                 },
+    #                 {
+    #                     "sound": ["whispers"],
+    #                     "text": "I could hear faint whispers in the distance"
+    #                 },
+    #                 {
+    #                     "sound": ["dark sitar"],
+    #                     "text": "and every once in a while, the sound of a dark sitar would drift through the air, sending shivers down my spine.",
+    #                 }
+    #             ]
+    #         },
+    #     ]
+    # }
+
     config = {
         "project_id": "8c3de4dd",
-        "title": "Test",
+        "title": "7c87bbd0-a06f-41b1-ba61-ae1faecb9e3d",
         "background_sound": {
             "path": "https://cdn.pixabay.com/download/audio/2022/01/18/audio_3ad65087c4.mp3?filename=thriller-ambient-14563.mp3",
-            "start": 40,
+            "start": 40
         },
         "speech": {
             "language": "en-US",
@@ -255,46 +311,74 @@ if __name__ == "__main__":
         },
         "paragraphs": [
             {
-                "image_title": "dark and foreboding mansion with cracked walls and overgrown foliage",
-                "image": "https://replicate.delivery/pbxt/AHrvFfe3eEd9fSNhicwGnSKgFFyFkW8voegIqAmzox2e93nGE/out-0.png",
+                "image_title": "79e9e1f1-674b-446e-bd51-2aa3ec0bc64c",
+                "image": "https://replicate.delivery/pbxt/DezllqyaMvzcTy1yZWU9WOvtIwoXKeoHNo47ovNremKVDH1gA/out-1.png",
                 "text": [
                     {
-                        "sound": ["thunder"],
-                        "text": "The storm was loud and scary, and I couldn't help but feel like I was being watched as I walked up the long driveway to the mansion."
+                        "sound": [
+                            "monster growl"
+                        ],
+                        "text": "The witch in the forest was known to hunt random tourists and eat them."
                     },
                     {
-                        "text": "The air was heavy with the smell of decay and must, and I couldn't shake the feeling that something terrible was waiting for me inside.",
+                        "text": "People who stayed too long in the area vanished without a trace."
                     },
                     {
-                        "sound": ["door creek"],
-                        "text": "As I approached the front door, I hesitated for a moment, wondering if I should turn back.",
+                        "text": "It was said that no one could escape her."
                     },
                     {
-                        "text": "But my curiosity won out and I pushed the door open, stepping into the darkness beyond.",
-                    },
-                ]
-            },
-            {
-                "image_title": "creepy hallway with broken chandelier and shadowy figures",
-                "image": "https://replicate.delivery/pbxt/WtCfp8htkg2yEK0osaCeRH8vbW3FMgSPVaqRTE9yrimwfepBB/out-0.png",
-                "text": [
-                    {
-                        "text": "As I moved further into the mansion, the air grew colder and the shadows seemed to stretch out and claw at me.",
-                    },
-                    {
-                        "sound": ["concrete footsteps"],
-                        "text": "The sound of my own footsteps echoing off the walls did little to comfort me, and I couldn't shake the feeling that I was being followed.",
-                    },
-                    {
-                        "sound": ["whispers"],
-                        "text": "I could hear faint whispers in the distance"
-                    },
-                    {
-                        "sound": ["dark sitar"],
-                        "text": "and every once in a while, the sound of a dark sitar would drift through the air, sending shivers down my spine.",
+                        "text": "Even the bravest adventurers were no match for her."
                     }
                 ]
             },
+            {
+                "image_title": "4cd47a75-ffa1-46fa-94d9-eebee84320fe",
+                "image": "https://replicate.delivery/pbxt/6HXE8Lg0R2pwPpD92pfse9RHue457eTPfmP6qVP9agtKRcUDC/out-0.png",
+                "text": [
+                    {
+                        "sound": [
+                            "squeak"
+                        ],
+                        "text": "The locals whispered about the witch and the curses she laid upon those who trespassed her forest."
+                    },
+                    {
+                        "sound": [
+                            "concrete footsteps"
+                        ],
+                        "text": "She was a powerful creature, and her appetite for human flesh was insatiable."
+                    },
+                    {
+                        "sound": [
+                            "thunder"
+                        ],
+                        "text": "Every night she could be heard howling in the darkness."
+                    }
+                ]
+            },
+            {
+                "image_title": "6449a781-4a6f-481a-a2dc-c62ff50ac655",
+                "image": "https://replicate.delivery/pbxt/Tzz1jyCM9fVfq0uvQlrIZ8z6Q4scR7tjADM90QR14f1QFH1gA/out-0.png",
+                "text": [
+                    {
+                        "sound": [
+                            "wind"
+                        ],
+                        "text": "The witch was an ancient spirit, and her presence filled the forest with dread."
+                    },
+                    {
+                        "sound": [
+                            "possessed laugh"
+                        ],
+                        "text": "Her eyes glowed red in the night, and her cackling laughter echoed through the trees."
+                    },
+                    {
+                        "sound": [
+                            "glass smash"
+                        ],
+                        "text": "She was a creature of pure evil, and it seemed no one could stop her."
+                    }
+                ]
+            }
         ]
     }
 
